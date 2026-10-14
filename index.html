@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        try {
+          if (typeof window !== 'undefined' && window.fetch) {
+            var nativeFetch = window.fetch.bind(window);
+            var customFetch = nativeFetch;
+
+            var desc = {
+              configurable: true,
+              enumerable: true,
+              get: function () {
+                return customFetch;
+              },
+              set: function (newFn) {
+                customFetch = typeof newFn === 'function' ? newFn : nativeFetch;
+              },
+            };
+
+            try {
+              Object.defineProperty(window, 'fetch', desc);
+            } catch (_) {}
+
+            if (typeof Window !== 'undefined' && Window.prototype) {
+              try {
+                Object.defineProperty(Window.prototype, 'fetch', desc);
+              } catch (_) {}
+            }
+          }
+        } catch (_) {}
+      })();
+    </script>
+    <title>Glowora | Event Lighting Decoration Pakistan — Light Up Every Moment</title>
+    <meta name="description" content="Turn every celebration into a magical experience. Premium event lighting decoration & setup bookings across Pakistan for Weddings, Barat, Waleema, Mehndi, Birthdays, and Parties." />
+    <meta property="og:title" content="Glowora | Event Lighting Decoration Pakistan" />
+    <meta property="og:description" content="Turn every celebration into a magical experience. Premium event lighting decoration & setup bookings across Pakistan." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#F8F9FC] text-[#1A1D20] antialiased selection:bg-[#C00000] selection:text-white min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
